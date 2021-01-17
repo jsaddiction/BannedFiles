@@ -242,7 +242,7 @@ def main():
         if os.environ.get('NZBNA_EVENT') == 'NZB_ADDED':
             sys.exit(POSTPROCESS_NONE)
 
-    print('[DETAIL] Detecting banned files in %s' % NzbName)
+    print('[INFO] Detecting banned files in %s' % NzbName)
     sys.stdout.flush()
 
     if detectBannedFile(Directory):
