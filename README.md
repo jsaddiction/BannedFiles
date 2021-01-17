@@ -1,1 +1,2 @@
 # BannedFiles
+### An NZBGet script
