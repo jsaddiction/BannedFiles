@@ -265,6 +265,7 @@ def main():
         # doesn't consider nzb as fake we remove the old marking. That's
         # of course a rare case that someone will redownload a fake but
         # at least during debugging of fake detector we do that all the time.
+        print('[DETAIL] No Banned files detected in %s yet' % NzbName)
         if os.environ.get('NZBPR_PPSTATUS_BANNED') == 'yes':
             print('[NZB] NZBPR_PPSTATUS_BANNED=')
 
