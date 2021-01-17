@@ -163,6 +163,7 @@ def connectNzbget():
 def detectBannedFile(dir):
     fileList = [ o for o in os.listdir(dir) if os.path.isfile(os.path.join(dir, o)) ]
     for item in fileList:
+        print('[INFO] Checking %s' % item)
         if os.path.splitext(item)[-1] in bannedExtensions:
             print('[INFO] Found file with banned extension: ' + item)
             print('[NZB] NZBPR_PPSTATUS_BANNEDFILE=%s' % item)
@@ -242,7 +243,7 @@ def main():
         if os.environ.get('NZBNA_EVENT') == 'NZB_ADDED':
             sys.exit(POSTPROCESS_NONE)
 
-    print('[INFO] Detecting banned files in %s' % NzbName)
+    print('[DETAIL] Detecting banned files in %s' % NzbName)
     sys.stdout.flush()
 
     if detectBannedFile(Directory):
@@ -265,7 +266,6 @@ def main():
         # doesn't consider nzb as fake we remove the old marking. That's
         # of course a rare case that someone will redownload a fake but
         # at least during debugging of fake detector we do that all the time.
-        print('[INFO] No Banned files detected in %s yet' % NzbName)
         if os.environ.get('NZBPR_PPSTATUS_BANNED') == 'yes':
             print('[NZB] NZBPR_PPSTATUS_BANNED=')
 
