@@ -50,7 +50,7 @@ POSTPROCESS_NONE=95
 POSTPROCESS_ERROR=94
 
 mediaExtensions = ['.mkv', '.avi', '.divx', '.xvid', '.mov', '.wmv', '.mp4', '.mpg', '.mpeg', '.vob', '.iso', '.m4v']
-bannedExtensions = os.environ.get('NZBPO_BANNEDEXTENSIONS').replace(' ', '').split(',')
+bannedExtensions = os.environ.get('NZBPO_BANNEDEXTENSIONS', '').replace(' ', '').split(',')
 
 
 # NZBPR_PPSTATUS_BANNED: boolean, true if found unwanted extension
@@ -215,6 +215,7 @@ def sort_inner_files():
 def main():
     startCheck()
 
+    # Set prefix if post processing or downloading
     Prefix = 'NZBNA_' if 'NZBNA_EVENT' in os.environ else 'NZBPP_'
 
     # Read context (what nzb is currently being processed)
